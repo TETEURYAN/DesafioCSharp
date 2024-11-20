@@ -1,0 +1,5 @@
+C:\Users\Matheus\source\repos\Desafio\Desafio 1.2\obj\Debug\net8.0\Desafio 1.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matheus\source\repos\Desafio\Desafio 1.2\obj\Debug\net8.0\Desafio 1.2.AssemblyInfoInputs.cache
+C:\Users\Matheus\source\repos\Desafio\Desafio 1.2\obj\Debug\net8.0\Desafio 1.2.AssemblyInfo.cs
+C:\Users\Matheus\source\repos\Desafio\Desafio 1.2\obj\Debug\net8.0\Desafio 1.2.csproj.CoreCompileInputs.cache
+C:\Users\Matheus\source\repos\Desafio\Desafio 1.2\obj\Debug\net8.0\Desafio 1.2.sourcelink.json
