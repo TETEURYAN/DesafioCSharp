@@ -1,22 +1,46 @@
-﻿using System;
+﻿using Desafio_2._1.Services;
+using Microsoft.VisualBasic;
+using System;
+using System.Threading.Tasks;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
-        // Exibe o menu de opções de entrada
         Console.WriteLine("Conversor de Moeda");
-        Console.Write("Digite o valor a ser convertido: ");
-        double valorOrigem = Convert.ToDouble(Console.ReadLine());
 
-        // Solicita a taxa de conversão
-        Console.Write("Digite a taxa de conversão (1 unidade de origem para quantas unidades da moeda de destino): ");
-        double taxaConversao = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Digite a moeda de origem: ");
+        string moedaOrigem = Console.ReadLine().ToUpper();  
+
+       
+        Console.Write("Digite a moeda de destino: ");
+        string moedaDestino = Console.ReadLine().ToUpper();  
+
+       
+        Console.Write("Digite o valor: ");
+        if (!double.TryParse(Console.ReadLine(), out double valorEntrada))
+        {
+            Console.WriteLine("Valor inválido. Tente novamente.");
+            return;
+        }
+
+        Request APIConversor = new Request();
+
+        
+        Conversion conversao = await APIConversor.IntegracaoAsync(moedaOrigem, moedaDestino);
+
+        
+        if (conversao.Concrete)
+        {
+            Console.WriteLine("Erro ao obter a taxa de conversão.");
+            return;
+        }
 
         // Calcula o valor convertido
-        double valorConvertido = valorOrigem;
+        double valorConvertido = Math.Round(valorEntrada * conversao.ConversionRate, 2, MidpointRounding.ToEven);
 
-        // Exibe o valor convertido
-        Console.WriteLine($"Valor convertido: {valorConvertido}");
+        // Exibe as informações de conversão
+        Console.WriteLine($"Taxa de conversão: {conversao.ConversionRate:F6}");
+        Console.WriteLine($"Valor convertido: {moedaDestino} {valorConvertido:F2}");
     }
 }
